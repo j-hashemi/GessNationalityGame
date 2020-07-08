@@ -9,12 +9,35 @@ class ResultPresenter extends Component {
     }
     return (
       <div>
-        <span className={cssClass}>Your Score is : {this.props.score}</span>
+        {this.props.score > 0 && (
+          <h4>
+            Your Score is :{" "}
+            <span className="badge badge-success">{this.props.score}</span>
+          </h4>
+        )}
 
-        <div className="well">
-          <span>Are you want to try again?</span>
-          <button className="btn btn-success btn-sm">Yes</button>
-          <button className="btn btn-danger btn-sm">No</button>
+        {this.props.score == 0 && (
+          <label>Unfortunately, your guesses were incorrect!</label>
+        )}
+
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <span>Do you want to try again?</span>
+            <div>
+              <button
+                onClick={() => this.props.onTryAgain(true)}
+                className="btn btn-success btn-sm mr-2"
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => this.props.onTryAgain(false)}
+                className="btn btn-danger btn-sm mr-2"
+              >
+                No
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

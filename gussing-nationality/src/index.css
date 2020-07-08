@@ -51,10 +51,10 @@ code {
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   position: relative;
-  background-size: 100px;
+  background-size: 200px;
   animation: mymove 3s infinite;
 }
 @keyframes mymove {
@@ -63,6 +63,6 @@ img {
   }
 
   to {
-    top: 370px;
+    top: 270px;
   }
 }

@@ -8,7 +8,7 @@ import ResultPresenter from "./resultPresenter";
 class GameBox extends Component {
   state = {
     people: getPeople(),
-    time: 1,
+    time: 0,
     currentItem: null,
     score: 0,
   };
@@ -20,6 +20,7 @@ class GameBox extends Component {
   changePicture = () => {
     if (this.state.time > 10) {
       clearInterval(this.state.intervalId);
+      this.props.onEndGame(this.state.score);
       this.setState({ currentItem: null });
       return;
     }
@@ -29,12 +30,11 @@ class GameBox extends Component {
 
     var time = this.state.time + 1;
     this.setState({ currentItem: item, time });
+    this.props.onPictureChange(time);
   };
 
   componentDidMount = () => {
-    this.changePicture();
-    var intervalId = setInterval(this.changePicture, 3000);
-    this.setState({ intervalId });
+    this.interval();
   };
 
   handleOnGuess = (componentKey) => {
@@ -44,15 +44,32 @@ class GameBox extends Component {
     }
   };
 
+  interval = () => {
+    var intervalId = setInterval(this.changePicture, 3000);
+    this.setState({ intervalId });
+  };
+  handleTryAgain = (needToTry) => {
+    if (needToTry) {
+      this.setState({ time: 0, score: 0 });
+      this.interval();
+    }
+  };
+
   render() {
     return (
-      <div className="center">
-        {this.state.time < 11 && (
+      <React.Fragment>
+        {this.state.time < 11 && this.state.currentItem != null && (
           <GuessImage
-            source={require("../contents/images/" + this.getPath())}
+            source={require("../contents/images/" +
+              this.state.currentItem.picUrl)}
           />
         )}
-        {this.state.time == 11 && <ResultPresenter score={this.state.score} />}
+        {this.state.time == 11 && (
+          <ResultPresenter
+            onTryAgain={this.handleTryAgain}
+            score={this.state.score}
+          />
+        )}
         <Country
           onGuess={this.handleOnGuess}
           className={"bottomleft"}
@@ -73,19 +90,8 @@ class GameBox extends Component {
           className={"topleft"}
           title="Thai"
         />
-      </div>
+      </React.Fragment>
     );
-  }
-
-  getPath() {
-    let url = "";
-    if (this.state.currentItem == null) {
-      var random = this.getRandomIndex();
-      url = this.state.people[random].picUrl;
-    } else {
-      url = this.state.currentItem.picUrl;
-    }
-    return url;
   }
 }
 
