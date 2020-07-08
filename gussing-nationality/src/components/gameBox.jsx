@@ -38,10 +38,14 @@ class GameBox extends Component {
   };
 
   handleOnGuess = (componentKey) => {
+    let score = 0;
     if (componentKey === this.state.currentItem.nationality) {
-      let score = this.state.score + 1;
+      score = this.state.score + 20;
       this.setState({ score });
+    } else {
+      score = this.state.score - 5;
     }
+    this.setState({ score });
   };
 
   interval = () => {
