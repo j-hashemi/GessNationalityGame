@@ -19,7 +19,7 @@ class App extends Component {
     if (this.state.totalScore > 0)
       return (
         <button type="button" className="btn btn-secondary bottomleft">
-          Total Score
+          Total Score&nbsp;
           <span className="badge badge-light">{this.state.totalScore}</span>
         </button>
       );

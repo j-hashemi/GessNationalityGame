@@ -64,11 +64,12 @@ class GameBox extends Component {
       <React.Fragment>
         {this.state.time < 11 && this.state.currentItem != null && (
           <GuessImage
+            nationality={this.state.currentItem.nationality}
             source={require("../contents/images/" +
               this.state.currentItem.picUrl)}
           />
         )}
-        {this.state.time == 11 && (
+        {this.state.time === 11 && (
           <ResultPresenter
             onTryAgain={this.handleTryAgain}
             score={this.state.score}

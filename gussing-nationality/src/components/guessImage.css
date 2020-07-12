@@ -1,0 +1,97 @@
+img {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 3px;
+  background-size: 200px;
+}
+
+.topLeftMove {
+  animation: topLeft 3s infinite, fading 3s infinite;
+}
+.topRightMove {
+  animation: topRight 3s infinite, fading 3s infinite;
+}
+.bottomRightMove {
+  animation: bottomRight 3s infinite, fading 3s infinite;
+}
+.bottomLeftMove {
+  animation: bottomLeft 3s infinite, fading 3s infinite;
+}
+
+@keyframes topLeft {
+  0% {
+    top: 0px;
+    right: 0px;
+  }
+
+  80% {
+    top: 270px;
+    right: 0px;
+  }
+  100% {
+    top: 210px;
+    right: 100px;
+  }
+}
+
+@keyframes topRight {
+  0% {
+    top: 0px;
+    left: 00px;
+  }
+
+  80% {
+    top: 270px;
+    left: 00px;
+  }
+  100% {
+    top: 210px;
+    left: 100px;
+  }
+}
+
+@keyframes bottomRight {
+  0% {
+    top: 0px;
+    left: 0px;
+  }
+
+  80% {
+    top: 270px;
+    left: 0px;
+  }
+  100% {
+    top: 270px;
+    left: 100px;
+  }
+}
+@keyframes bottomLeft {
+  0% {
+    top: 0px;
+    right: 0px;
+  }
+
+  80% {
+    top: 270px;
+    right: 0px;
+  }
+  100% {
+    right: 100px;
+    top: 270px;
+  }
+}
+@keyframes fading {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}

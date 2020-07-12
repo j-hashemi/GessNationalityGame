@@ -49,20 +49,3 @@ code {
   text-align: center;
   font-size: 18px;
 }
-
-img {
-  width: 200px;
-  height: 200px;
-  position: relative;
-  background-size: 200px;
-  animation: mymove 3s infinite;
-}
-@keyframes mymove {
-  from {
-    top: 0px;
-  }
-
-  to {
-    top: 270px;
-  }
-}

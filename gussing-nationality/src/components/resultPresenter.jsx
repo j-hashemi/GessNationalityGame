@@ -3,10 +3,10 @@ import React, { Component } from "react";
 class ResultPresenter extends Component {
   state = {};
   render() {
-    var cssClass = "success";
-    if (this.props.score == 0) {
-      cssClass = "danger";
-    }
+    // var cssClass = "success";
+    // if (this.props.score == 0) {
+    //   cssClass = "danger";
+    // }
     return (
       <div>
         {this.props.score > 0 && (
@@ -16,7 +16,7 @@ class ResultPresenter extends Component {
           </h4>
         )}
 
-        {this.props.score == 0 && (
+        {this.props.score === 0 && (
           <label>Unfortunately, your guesses were incorrect!</label>
         )}
 
